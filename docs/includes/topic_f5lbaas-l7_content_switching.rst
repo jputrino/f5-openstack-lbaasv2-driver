@@ -33,7 +33,7 @@ Caveats
 Configuration
 -------------
 
-No agent configuration changes are required. You can define L7 switching policy and rule definitions when you create or update a listener.
+L7 content switching doesn't require any configuration changes. You can define L7 switching policy and rule definitions when you create or update a listener.
 
 Usage
 -----
