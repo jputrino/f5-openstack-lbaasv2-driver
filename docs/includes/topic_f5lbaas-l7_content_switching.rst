@@ -6,13 +6,13 @@ Overview
 
 L7 content switching takes its name from layer 7 of the OSI Model, also called the application layer. [#f1]_ You can use L7 switching policies and rules to route request traffic as it passes through the virtual server.
 
+.. [#f1] https://wiki.openstack.org/wiki/Neutron/LBaaS/l7 
+
 .. seealso:: 
 
     * OpenStack Neutron `LBaaS Layer 7 rules documentation <http://specs.openstack.org/openstack/neutron-specs/specs/mitaka/lbaas-l7-rules.html>`_
     * OpenStack Neutron `LBaaSv2 l7 Wiki <https://wiki.openstack.org/wiki/Neutron/LBaaS/l7>`_
     * `BIG-IP Local Traffic Management -- Getting Started with Policies <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/local-traffic-policies-getting-started-12-1-0.html?sr=59376207>`_
-
-.. [#f1] https://wiki.openstack.org/wiki/Neutron/LBaaS/l7 
 
 
 Prerequisites
@@ -23,7 +23,8 @@ Prerequisites
 - Administrator access to both BIG-IP device(s) and OpenStack cloud.
 - F5 :ref:`agent <agent:home>` and :ref:`service provider driver <Install the F5 LBaaSv2 Driver>` installed on the Neutron controller and all other hosts from which you want to provision LBaaS services.
 - Knowledge of `OpenStack Networking <http://docs.openstack.org/mitaka/networking-guide/>`_ concepts.
-- Knowledge of BIG-IP `system configuration`_, `local traffic management`_, & `device service clustering`_.
+- Basic understanding of `BIG-IP system configuration <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-system-initial-configuration-12-0-0/2.html#conceptid>`_.
+- Basic understanding of `BIG-IP Local Traffic Management <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-basics-12-0-0.html>`_.
 
 Caveats
 -------
@@ -33,7 +34,7 @@ Caveats
 Configuration
 -------------
 
-L7 content switching doesn't require any configuration changes. You can define L7 switching policy and rule definitions when you create or update a listener.
+L7 content switching doesn't require any configuration changes. You can define L7 switching policies and rules when you create or update a listener.
 
 Usage
 -----
