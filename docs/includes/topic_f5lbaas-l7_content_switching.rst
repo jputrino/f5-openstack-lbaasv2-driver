@@ -4,9 +4,39 @@ F5 LBaaSv2 L7 Content Switching
 Overview
 --------
 
-L7 content switching takes its name from layer 7 of the OSI Model, also called the application layer. [#f1]_ As the name implies, L7 content switching decisions are based on the application data, or content, of request traffic as it passes through the virtual server. Via the API, you can define actions to be taken when certain content conditions are met. See the OpenStack Neutron `LBaaS Layer 7 rules documentation <http://specs.openstack.org/openstack/neutron-specs/specs/mitaka/lbaas-l7-rules.html>`_ for more information.
+L7 content switching takes its name from layer 7 of the OSI Model, also called the application layer. [#f1]_ You can use L7 switching policies and rules to route request traffic as it passes through the virtual server.
+
+.. seealso:: 
+
+    * OpenStack Neutron `LBaaS Layer 7 rules documentation <http://specs.openstack.org/openstack/neutron-specs/specs/mitaka/lbaas-l7-rules.html>`_
+    * OpenStack Neutron `LBaaSv2 l7 Wiki <https://wiki.openstack.org/wiki/Neutron/LBaaS/l7>`_
+    * `BIG-IP Local Traffic Management -- Getting Started with Policies <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/local-traffic-policies-getting-started-12-1-0.html?sr=59376207>`_
 
 .. [#f1] https://wiki.openstack.org/wiki/Neutron/LBaaS/l7 
+
+
+Prerequisites
+-------------
+
+- Licensed, operational BIG-IP :term:`device` or :term:`device cluster`.
+- Operational OpenStack cloud (|openstack| release).
+- Administrator access to both BIG-IP device(s) and OpenStack cloud.
+- F5 :ref:`agent <agent:home>` and :ref:`service provider driver <Install the F5 LBaaSv2 Driver>` installed on the Neutron controller and all other hosts from which you want to provision LBaaS services.
+- Knowledge of `OpenStack Networking <http://docs.openstack.org/mitaka/networking-guide/>`_ concepts.
+- Knowledge of BIG-IP `system configuration`_, `local traffic management`_, & `device service clustering`_.
+
+Caveats
+-------
+
+- The REGEX comparison type is not supported in this release.
+
+Configuration
+-------------
+
+No agent configuration changes are required. You can define L7 switching policy and rule definitions when you create or update a listener.
+
+Usage
+-----
 
 Neutron LBaaSv2 API L7 Policies and Rules
 `````````````````````````````````````````
@@ -155,26 +185,9 @@ Neutron LBaaSv2 API L7 Rules Implementation:
             | RedirectToPool   | Forward traffic to pool         |
             +------------------+---------------------------------+
 
-Prerequisites
--------------
 
-- Licensed, operational BIG-IP :term:`device` or :term:`device cluster`.
-- Operational OpenStack cloud (|openstack| release).
-- Administrator access to both BIG-IP device(s) and OpenStack cloud.
-- F5 :ref:`agent <agent:home>` and :ref:`service provider driver <Install the F5 LBaaSv2 Driver>` installed on the Neutron controller and all other hosts from which you want to provision LBaaS services.
-- Knowledge of `OpenStack Networking <http://docs.openstack.org/mitaka/networking-guide/>`_ concepts.
-- Basic understanding of `BIG-IP system configuration <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-system-initial-configuration-12-0-0/2.html#conceptid>`_.
-- Basic understanding of `BIG-IP Local Traffic Management <https://support.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/ltm-basics-12-0-0.html>`_
 
-Caveats
--------
 
-- The REGEX comparison type is not supported in this release.
-
-Configuration
--------------
-
-#. It's not necessary to make any agent configuration changes. Rather, L7 switching policy and rule definitions are made when creating or updating a listener, as shown in the example below from the OpenStack documentation.
 
 #. CLI Example (copied from the Neutron L7 feature page linked above):
 
