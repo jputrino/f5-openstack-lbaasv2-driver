@@ -10,16 +10,17 @@ title
 
 Overview
 --------
+    .. The overview should contain background information about the feature that will aid the user in understanding and/or implementing it. Relevant architectural and design information can go here, but be brief! Ask yourself if the information is essential to the 80% use case before including it.
 
 
 Use Case
 --------
-
+    .. the use case provide context. Why does the user want to use this feature?
 
 
 Prerequisites
 -------------
-
+    .. prerequisites come from the master list. If you need to add a new one, add it to the master as well.
 -
 -
 -
@@ -27,7 +28,7 @@ Prerequisites
 
 Caveats
 -------
-
+    .. caveats are things that could potentially trip the user up or elements of the feature that are not currently supported.
 -
 -
 -
@@ -35,10 +36,16 @@ Caveats
 
 Configuration
 -------------
+    .. you may include a brief introduction if needed. Tell the user what steps need to be completed to acheive the goal stated in the use case. Use a numbered list. Be clear and succint.
+
+    #. Edit the :ref:`agent configuration file`.
+    #.
+    #.
 
 
 Further Reading
 ---------------
+    .. provide links to related documentation in this doc set, the OpenStack documentation, and/or the BIG-IP documentation.
 
 .. seealso::
 
