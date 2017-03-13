@@ -234,6 +234,10 @@ VxLAN traffic is not reaching BIG-IP
         }
 
 
+F5 agent doesn't apply Enhanced Service Definitions to BIG-IP virtual server
+----------------------------------------------------------------------------
+
+If you configured an Enhanced Service Definition (ESD) and the agent didn't apply the ESD to your BIG-IP, there may be issue with the JSON formatting. We recommend testing ESDs with a JSON linter as a matter of course *before* implementing them in OpenStack.
 
 
 .. _port lockdown behavior: https://support.f5.com/kb/en-us/solutions/public/17000/300/sol17333.html
