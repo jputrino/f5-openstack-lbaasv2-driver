@@ -1,53 +1,35 @@
 Customizing OpenStack LBaaSv2 Using Enhanced Service Definitions
 ================================================================
 
-BIG-IP has many load balancing configurations that don't have direct
-implementation in the OpenStack LBaaSv2 specification. While it's easy to
-directly customize BIG-IP traffic management using profiles, policies,
-and iRules, LBaaSv2 doesn't provide a native way to apply these to BIG-IP virtual
-servers. To help users get the most from their BIG-IPs, F5 Networks
-extended its implementation of LBaaSv2 to add an Enhanced Service
-Definition (ESD) feature. With ESDs, you can customize your OpenStack load
-balancers for specific applications.
+BIG-IP has many load balancing configurations that don't have direct implementation in the OpenStack LBaaSv2 specification. While it's easy to directly customize BIG-IP local traffic management settings using profiles, policies, and iRules, LBaaSv2 doesn't provide a native way to apply these to BIG-IP virtual servers.
+To help users get the most from their BIG-IPs, the F5 OpenStack Agent now provides includes support for Enhanced Service Definitions (ESD). ESDs enable a broader set of BIG-IP LTM functionality, allowing you to customize your OpenStack load balancers for specific applications.
 
 How ESDs Work
 -------------
 
 An ESD is a set of tags and values that define custom settings for BIG-IP objects.
-Typically, an ESD applies one or more profiles, policies, or iRules to
-a BIG-IP virtual server. ESDs are stored in JSON files on the system
-running an F5 OpenStack LBaaSv2 agent. The F5 agent reads
-all ESD JSON files located in :file:`/etc/neutron/services/f5/esd/` on startup.
+Typically, an ESD applies one or more profiles, policies, or iRules to a BIG-IP virtual server. ESDs are stored in JSON files on the system running an F5 OpenStack LBaaSv2 agent. The F5 agent reads all ESD JSON files located in :file:`/etc/neutron/services/f5/esd/` on startup.
+
+The F5 agent applies ESDs to BIG-IP virtual servers using LBaaSv2 `L7 policy`_ operations. When you create an LBaaSv2 L7 policy object (``neutron lbaas-l7policy-create``), the agent checks the policy name against the names of all available ESDs. If it finds a match, the agent applies the ESD to the BIG-IP virtual server associated with the policy. If the agent doesn't find a matching ESD, it creates a standard L7 policy. Essentially, the F5 agent supersedes the standard LBaaSv2 behavior, translating ``neutron lbaas-l7policy-create mypolicy`` into “apply the mypolicy ESD to the BIG-IP”.
 
 You can define multiple ESDs, each of contains a set of predefined tags and values, in a single JSON file. The agent validates each tag and discards any that are invalid. ESDs remain fixed in agent memory until an agent is restarted.
+When you apply multiple L7 policies, each subsequent ESD overwrites the virtual server settings defined by previous ESDs. For this reason, we recommend that you define all settings you want to apply for a specific application in a single ESD. If you define multiple ESDs, each should apply to one (1) specific application.
+
+Deleting an L7 policy that matches an ESD removes all ESD settings from the virtual server, returning the virtual server to its original state.
 
 .. caution::
 
-    The F5 agent ignores all files that aren't valid JSON.
+    The F5 agent ignores all ESD files that aren't valid JSON. If your ESD policy wasn't applied, check your JSON.
 
 
-The F5 agent uses LBaaSv2 L7 policy operations to apply ESDs to BIG-IP virtual servers.
-When you create an LBaaSv2 L7 policy object, the agent checks the policy name against the names of all available (in other words, valid) ESDs. If it finds a match, the F5 agent applies the ESD to the policy's associated virtual server. If the agent doesn't find an ESD matching the policy name, it creates a standard L7 policy instead.
+Release Compatibility
+---------------------
 
-Essentially, the F5 agent overrides the standard LBaaSv2 behavior for creating an L7 policy. If an L7 policy name matches an ESD name, "create L7 policy" means “apply an ESD.” If an L7 policy name does not match an ESD name, creating an L7 policy means “create an L7 policy.”
+L7 policies originated in the Mitaka release of OpenStack; you can use ESDs with a Mitaka (or greater) version of the F5 LBaaSv2 agent.
 
+You cannot use ESDs with the Liberty version of the F5 agent. The ESD feature was introduced in ``f5-openstack-agent`` v9.3.0.
 
-
-While you can apply multiple L7 policies, doing so will overwrite
-virtual server settings defined by previous ESDs. Deleting an L7 policy
-that matches an ESD will remove all ESD settings from the virtual
-server, and return the virtual server to its original state. For these
-reasons, it is best to define a single ESD that contains all settings
-you want to apply for a specific application, instead of applying
-multiple ESDs.
-
-Because L7 policies were introduced in the Mitaka release of OpenStack,
-you can only use ESDs with a Mitaka (or greater) version of the F5
-LBaaSv2 agent. You cannot use ESDs with the Liberty version of the F5
-agent. Release v9.3.0 is the first version of the agent that supports
-ESDs.
-
-Creating ESDs
+Create an ESD
 -------------
 
 Create ESDs by editing files to define one or more ESDs in JSON format.
@@ -348,3 +330,5 @@ Helpful Hints
 7. If DEBUG logging is enabled, check the agent log,
    /var/log/neutron/f5-openstack-agent.log, for statements that report
    whether a tag is valid or invalid.
+
+.. _L7 policy: https://wiki.openstack.org/wiki/Neutron/LBaaS/l7#L7_Policies
