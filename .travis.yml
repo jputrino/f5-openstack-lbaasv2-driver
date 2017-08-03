@@ -11,7 +11,7 @@ deploy:
 - provider: script
   skip_cleanup: true
   on:
-    branch: v8.0
+    branch: v9.0
     repo: F5Networks/f5-openstack-lbaasv2-driver
   script:
-  - ./docs/scripts/deploy-docs.sh publish-product-docs-to-prod openstack/lbaasv2-driver/liberty v8.0
+  - ./docs/scripts/deploy-docs.sh publish-product-docs-to-prod openstack/lbaasv2-driver/liberty v9.0
