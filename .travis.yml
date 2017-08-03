@@ -14,4 +14,5 @@ deploy:
     branch: v9.0
     repo: F5Networks/f5-openstack-lbaasv2-driver
   script:
-  - ./docs/scripts/deploy-docs.sh publish-product-docs-to-prod openstack/lbaasv2-driver/liberty v9.0
+  - ./docs/scripts/deploy-docs.sh publish-product-docs-to-prod openstack/lbaasv2-driver/mitaka v9.0
+  - ./docs/scripts/deploy-docs.sh aws s3 rm s3://$AWS_S3_BUCKET/products/openstack/lbaasv2-driver/liberty/v9.0/ --recursive
