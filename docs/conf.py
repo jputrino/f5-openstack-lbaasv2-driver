@@ -25,13 +25,14 @@ sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('.'))
 
 import f5lbaasdriver
+import f5_sphinx_theme
 
 VERSION = f5lbaasdriver.__version__
 
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.4'
+#needs_sphinx = '1.4'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -129,7 +130,7 @@ todo_include_todos = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'f5_sphinx_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -137,7 +138,7 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-#html_theme_path = []
+html_theme_path = f5_sphinx_theme.get_html_theme_path()
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -310,16 +311,3 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 
-intersphinx_mapping = {'heat': (
-     'http://f5-openstack-heat.readthedocs.io/en/liberty', None),
-     'heatplugins': (
-     'http://f5-openstack-heat-plugins.readthedocs.io/en/liberty', None),
-     'lbaasv1': (
-     'http://f5-openstack-lbaasv1.readthedocs.io/en/liberty/', None),
-     'agent': (
-     'http://f5-openstack-agent.readthedocs.io/en/liberty/', None),
-     'f5sdk': (
-     'http://f5-sdk.readthedocs.io/en/latest/', None),
-     'docs': (
-     'http://f5-openstack-docs.readthedocs.io/en/liberty/', None),
- }
