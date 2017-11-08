@@ -343,44 +343,57 @@ f5_lbaasv2_driver_shim_url = 'https://github.com/F5Networks/neutron-lbaas/releas
 # }
 
 rst_epilog = '''
-.. |openstack| replace:: %(openstack_release)s
+.. _available F5 agent: %(baseurl)s/products/openstack/agent/latest/
+.. _Capacity-based Scale out: %(baseurl)s/cloud/openstack/latest/lbaas/capacity-based-scaleout.html
+.. _Configure and start: %(baseurl)s/products/openstack/agent/latest/#configure-the-agent-long
+.. _Differentiated Service Environments: %(baseurl)s/cloud/openstack/latest/lbaas/differentiated-service-environments.html
+.. _Download the latest debian package: |f5_lbaasv2_driver_deb_url|
+.. _Download the latest rpm package: |f5_lbaasv2_driver_rpm_url|
+.. _F5 Agent for OpenStack Neutron: %(baseurl)s/products/openstack/agent/latest/
+.. _F5 Driver for OpenStack LBaaSv2 user documentation: %(baseurl)s/cloud/openstack/latest/lbaas
+.. _F5 Service Provider Package: %(baseurl)s/cloud/openstack/latest/lbaas-prep
+.. _Neutron LBaaS API: https://wiki.openstack.org/wiki/Neutron/LBaaS/API_2.0
+.. _OpenStack Neutron: https://docs.openstack.org/neutron/latest/
+.. _Partners: %(baseurl)s/cloud/openstack/latest/support/partners.html
+.. |agent-long| replace:: F5 Agent for OpenStack Neutron
+.. |agent-url| raw:: html
+
+   <a target="_blank" href="http://clouddocs.f5.com/products/openstack/agent/%(openstack_release)s">F5 Agent for OpenStack Neutron</a>
+.. |agent| replace:: :code:`f5-openstack-agent`
 .. |community_tempest_lbaasv2_tests| raw:: html
 
    <a href="https://github.com/openstack/neutron-lbaas/tree/stable/%(openstack_release_l)s">tests</a>
-.. |f5_lbaasv2_driver_readme| raw:: html
-
-   <a href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/blob/%(openstack_release_l)s/README.rst">README</a>
+.. |driver-long| replace:: F5 Driver for OpenStack LBaaSv2
+.. |driver-short| replace:: F5 driver
+.. |driver| replace:: :code:`f5-openstack-lbaasv2-driver`
+.. |f5_agent_pip_url| replace:: git+\https://github.com/F5Networks/f5-openstack-agent@v%(version)s
 .. |f5_agent_readme| raw:: html
 
    <a href="https://github.com/F5Networks/f5-openstack-agent/blob/%(openstack_release_l)s/README.rst">README</a>
-.. |f5_lbaasv2_driver_pip_url| replace:: git+https:\//github.com/F5Networks/f5-openstack-lbaasv2-driver@v%(version)s
-.. |f5_lbaasv2_driver_pip_url_branch| replace:: git+https:\//github.com/F5Networks/f5-openstack-lbaasv2-driver@%(openstack_release_l)s
-.. |f5_lbaasv2_driver_deb_url| replace:: \https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/python-f5-openstack-lbaasv2-driver_%(version)s-1_1404_all.deb
-.. |f5_lbaasv2_driver_rpm_url| replace:: \https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/f5-openstack-lbaasv2-driver-%(version)s-1.el7.noarch.rpm
 .. |f5_lbaasv2_driver_deb_package| replace:: python-f5-openstack-lbaasv2-driver_%(version)s-1_1404_all.deb
+.. |f5_lbaasv2_driver_deb_url| replace:: \https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/python-f5-openstack-lbaasv2-driver_%(version)s-1_1404_all.deb
+.. |f5_lbaasv2_driver_pip_url_branch| replace:: git+https:\//github.com/F5Networks/f5-openstack-lbaasv2-driver@%(openstack_release_l)s
+.. |f5_lbaasv2_driver_pip_url| replace:: git+https:\//github.com/F5Networks/f5-openstack-lbaasv2-driver@v%(version)s
+.. |f5_lbaasv2_driver_readme| raw:: html
+
+   <a href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/blob/%(openstack_release_l)s/README.rst">README</a>
 .. |f5_lbaasv2_driver_rpm_package| replace:: f5-openstack-lbaasv2-driver-%(version)s-1.el7.noarch.rpm
+.. |f5_lbaasv2_driver_rpm_url| replace:: \https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/f5-openstack-lbaasv2-driver-%(version)s-1.el7.noarch.rpm
 .. |f5_lbaasv2_driver_shim_url| replace:: %(f5_lbaasv2_driver_shim_url)s
-.. |f5_agent_pip_url| replace:: git+\https://github.com/F5Networks/f5-openstack-agent@v%(version)s
-.. |deb-download| raw:: html
-    
-    <a class="btn btn-info" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/python-f5-openstack-lbaasv2-driver_%(version)s-1_1404_all.deb">Debian package</a>
-.. |rpm-download| raw:: html
-    
-    <a class="btn btn-info" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/f5-openstack-lbaasv2-driver-%(version)s-1.el7.noarch.rpm">RPM package</a>
+.. |openstack| replace:: %(openstack_release)s
 .. |release-notes| raw:: html
 
-    <a class="btn btn-success" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/tag/v%(version)s/">Release Notes</a>
-.. |agent-long| replace:: F5 Agent for OpenStack Neutron
-.. |agent| replace:: :code:`f5-openstack-agent`
-.. |driver| replace:: :code:`f5-openstack-lbaasv2-driver`
-.. |driver-long| replace:: F5 Driver for OpenStack LBaaSv2
-.. |agent-url| raw:: html
-    
-    <a target="_blank" href="http://clouddocs.f5.com/products/openstack/agent/%(openstack_release)s">F5 Agent for OpenStack Neutron</a>
-.. |driver-short| replace:: F5 driver
+   <a class="btn btn-success" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/tag/v%(version)s/">Release Notes</a>
+.. |rpm-download| raw:: html
+
+   <a class="btn btn-info" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/f5-openstack-lbaasv2-driver-%(version)s-1.el7.noarch.rpm">RPM package</a>
+.. |deb-download| raw:: html
+
+   <a class="btn btn-info" href="https://github.com/F5Networks/f5-openstack-lbaasv2-driver/releases/download/v%(version)s/python-f5-openstack-lbaasv2-driver_%(version)s-1_1404_all.deb">Debian package</a>
 ''' % {
   'openstack_release': openstack_release,
   'openstack_release_l': openstack_release.lower(),
   'f5_lbaasv2_driver_shim_url': f5_lbaasv2_driver_shim_url,
-  'version': version
+  'version': version,
+  'baseurl': 'http://clouddocs.f5.com'
 }

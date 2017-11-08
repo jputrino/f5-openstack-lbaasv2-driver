@@ -194,15 +194,3 @@ What's Next
 .. |Build Status| image:: https://travis-ci.org/F5Networks/f5-openstack-lbaasv2-driver.svg?branch=stable/newton
     :target: https://travis-ci.org/F5Networks/f5-openstack-lbaasv2-driver
     :alt: Build Status
-
-
-.. _OpenStack Neutron: https://docs.openstack.org/neutron/latest/
-.. _F5 Agent for OpenStack Neutron: /products/openstack/latest/agent/
-.. _F5 Driver for OpenStack LBaaSv2 user documentation: /cloud/openstack/latest/lbaas
-.. _Neutron LBaaS API: https://wiki.openstack.org/wiki/Neutron/LBaaS/API_2.0
-.. _available F5 agent: /products/openstack/latest/agent/
-.. _F5 Service Provider Package: /cloud/openstack/latest/lbaas-prep
-.. _Download the latest debian package: |f5_lbaasv2_driver_deb_url|
-.. _Download the latest rpm package: |f5_lbaasv2_driver_rpm_url|
-.. _Partners: /cloud/openstack/latest/support/partners.html
-.. _Configure and start: /products/openstack/latest/agent/index.html#configure-the-agent-long
