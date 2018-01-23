@@ -20,6 +20,7 @@ install:
 - pip install hacking pytest coverage
 - pip install -r requirements.test.txt
 script:
+- echo $RELEASE_TAG
 - flake8 ./f5lbaasdriver
 - coverage run --source f5lbaasdriver -m py.test f5lbaasdriver/v2/bigip/
 - coverage report
